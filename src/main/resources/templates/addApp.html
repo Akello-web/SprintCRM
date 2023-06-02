@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="main_layout.html">
+<div layout:fragment="siteContent">
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <form action="/add-app" method="post">
+        <div class="row mt-4">
+          <div class="col-12">
+            <label>USER NAME:</label>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <input class="form-control" type="text" name="userName" placeholder="Insert Name" required>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12">
+            <label>COURSES:</label>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <select class="form-select" name="courseName">
+              <option selected></option>
+              <option>Java Course</option>
+              <option>C/C++</option>
+              <option>Python Bootcamp</option>
+              <option>Assembler</option>
+              <option>Junior Front-end developer</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12">
+            <label>PHONE NUMBER:</label>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <input class="form-control" type="number" name="phone" placeholder="Insert Phone number" required>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12">
+            <label>COMMENTARY:</label>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <textarea class="form-control" name="commentary" placeholder="Leave comment"></textarea>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <button class="btn btn-success btn-sm">ADD APPLICATION</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</html>

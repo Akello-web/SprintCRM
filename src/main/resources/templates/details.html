@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="main_layout.html">
+
+<div layout:fragment="siteContent" class="mt-2 mb-5">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <form action="/handle-app" method="post" th:if="${appById!=null}">
+                <input type="hidden" name="id" th:value="${appById.id}">
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label>USER NAME:</label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input class="form-control" type="text" name="userName"
+                               placeholder="Insert Name"
+                               th:value="${appById.userName}" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label>COURSE NAME:</label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <select class="form-select" name="courseName" readonly>
+                            <option th:text="${appById.courseName}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label>PHONE NUMBER:</label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input class="form-control" type="text" name="phone"
+                               placeholder="Insert Name"
+                               th:value="${appById.phone}" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label>COMMENT:</label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <textarea class="form-control" name="commentary"
+                                  th:text="${appById.commentary}" readonly></textarea>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button class="btn btn-success btn-sm" th:if="${!appById.handled}" >ORDER APPLICATION</button>
+                        <button type="button" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete-btn">
+                            DELETE
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- Modal -->
+            <div class="modal fade" id="delete-btn" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true" th:if="${appById!=null}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="/delete-app" method="post">
+                            <input type="hidden" name="id" th:value="${appById.id}">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm delete</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ARE YOU SURE?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-danger">DELETE</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <h4 th:if="${appById==null}" class="text-center">404 NOT FOUND</h4>
+        </div>
+    </div>
+</div>
+</html>

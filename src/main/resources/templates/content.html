@@ -1,0 +1,16 @@
+<div class="card mb-2" style="width: 40rem; height: 12rem;">
+  <div class="card-body" >
+    <input type="hidden" name="id" th:value="${app.id}">
+    <p class="card-text mb-1 text-danger"
+       th:text="${!app.handled?'New Application':''}"></p>
+    <h5 class="card-title"
+        th:text="'From: ' + ${app.userName}"></h5>
+    <h6 class="card-subtitle mt-2 mb-1"
+        th:text="'Course: ' + ${app.courseName}"></h6>
+    <p class="card-text mb-1"
+       th:text="${app.commentary}"></p>
+    <p class="card-text mb-1"
+       th:text="'Phone number: ' + ${app.phone}"></p>
+    <a th:href="@{'/details/' + ${app.id}}" class="card-link">Read More</a>
+  </div>
+</div>
